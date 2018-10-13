@@ -1,0 +1,4 @@
+3.008
+perl(Email::Simple)
+perl(MRO::Compat)
+perl(Module::Pluggable)
