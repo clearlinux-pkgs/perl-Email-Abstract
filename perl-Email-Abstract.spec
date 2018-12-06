@@ -83,13 +83,13 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.0/Email/Abstract.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Email/Abstract/EmailMIME.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Email/Abstract/EmailSimple.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Email/Abstract/MIMEEntity.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Email/Abstract/MailInternet.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Email/Abstract/MailMessage.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Email/Abstract/Plugin.pm
+/usr/lib/perl5/vendor_perl/5.28.1Email/Abstract.pm
+/usr/lib/perl5/vendor_perl/5.28.1Email/Abstract/EmailMIME.pm
+/usr/lib/perl5/vendor_perl/5.28.1Email/Abstract/EmailSimple.pm
+/usr/lib/perl5/vendor_perl/5.28.1Email/Abstract/MIMEEntity.pm
+/usr/lib/perl5/vendor_perl/5.28.1Email/Abstract/MailInternet.pm
+/usr/lib/perl5/vendor_perl/5.28.1Email/Abstract/MailMessage.pm
+/usr/lib/perl5/vendor_perl/5.28.1Email/Abstract/Plugin.pm
 
 %files dev
 %defattr(-,root,root,-)
