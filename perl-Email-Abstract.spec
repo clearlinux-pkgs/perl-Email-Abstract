@@ -4,7 +4,7 @@
 #
 Name     : perl-Email-Abstract
 Version  : 3.008
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Abstract-3.008.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Abstract-3.008.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libe/libemail-abstract-perl/libemail-abstract-perl_3.008-1.debian.tar.xz
@@ -12,6 +12,7 @@ Summary  : 'unified interface to mail representations'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Email-Abstract-license = %{version}-%{release}
+Requires: perl-Email-Abstract-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Email::Simple)
 BuildRequires : perl(MRO::Compat)
@@ -26,6 +27,7 @@ unified interface to mail representations
 Summary: dev components for the perl-Email-Abstract package.
 Group: Development
 Provides: perl-Email-Abstract-devel = %{version}-%{release}
+Requires: perl-Email-Abstract = %{version}-%{release}
 
 %description dev
 dev components for the perl-Email-Abstract package.
@@ -39,18 +41,28 @@ Group: Default
 license components for the perl-Email-Abstract package.
 
 
+%package perl
+Summary: perl components for the perl-Email-Abstract package.
+Group: Default
+Requires: perl-Email-Abstract = %{version}-%{release}
+
+%description perl
+perl components for the perl-Email-Abstract package.
+
+
 %prep
 %setup -q -n Email-Abstract-3.008
-cd ..
-%setup -q -T -D -n Email-Abstract-3.008 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libemail-abstract-perl_3.008-1.debian.tar.xz
+cd %{_builddir}/Email-Abstract-3.008
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Email-Abstract-3.008/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Email-Abstract-3.008/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -60,7 +72,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -69,8 +81,8 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Email-Abstract
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Email-Abstract/LICENSE
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Email-Abstract/deblicense_copyright
+cp %{_builddir}/Email-Abstract-3.008/LICENSE %{buildroot}/usr/share/package-licenses/perl-Email-Abstract/f64962ea2646981898a121d94ec42de3a591f049
+cp %{_builddir}/Email-Abstract-3.008/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Email-Abstract/ce1a3d9133bfc81a12f4f9822f2bdaec062009bc
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -83,13 +95,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Email/Abstract.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Email/Abstract/EmailMIME.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Email/Abstract/EmailSimple.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Email/Abstract/MIMEEntity.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Email/Abstract/MailInternet.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Email/Abstract/MailMessage.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Email/Abstract/Plugin.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -103,5 +108,15 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Email-Abstract/LICENSE
-/usr/share/package-licenses/perl-Email-Abstract/deblicense_copyright
+/usr/share/package-licenses/perl-Email-Abstract/ce1a3d9133bfc81a12f4f9822f2bdaec062009bc
+/usr/share/package-licenses/perl-Email-Abstract/f64962ea2646981898a121d94ec42de3a591f049
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Email/Abstract.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Email/Abstract/EmailMIME.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Email/Abstract/EmailSimple.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Email/Abstract/MIMEEntity.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Email/Abstract/MailInternet.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Email/Abstract/MailMessage.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Email/Abstract/Plugin.pm
