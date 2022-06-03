@@ -4,7 +4,7 @@
 #
 Name     : perl-Email-Abstract
 Version  : 3.009
-Release  : 22
+Release  : 23
 URL      : https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Abstract-3.009.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Abstract-3.009.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libe/libemail-abstract-perl/libemail-abstract-perl_3.008-1.debian.tar.xz
@@ -113,10 +113,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Email/Abstract.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Email/Abstract/EmailMIME.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Email/Abstract/EmailSimple.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Email/Abstract/MIMEEntity.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Email/Abstract/MailInternet.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Email/Abstract/MailMessage.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Email/Abstract/Plugin.pm
+/usr/lib/perl5/*
