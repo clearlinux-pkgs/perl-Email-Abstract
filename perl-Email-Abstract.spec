@@ -5,7 +5,7 @@
 #
 Name     : perl-Email-Abstract
 Version  : 3.010
-Release  : 28
+Release  : 29
 URL      : https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Abstract-3.010.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Abstract-3.010.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libe/libemail-abstract-perl/libemail-abstract-perl_3.009-2.debian.tar.xz
